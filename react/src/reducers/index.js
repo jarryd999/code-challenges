@@ -22,7 +22,8 @@ export function filterState(state = INITIAL_FILTERS, action) {
         case RECEIVE_FILTERS:
             return Object.assign({}, state,{
                 isFetching : false,
-                filters: action.filters
+                filters: action.filters,
+                activeFilter: action.filters[0]
             })
         default:
             return state
@@ -33,7 +34,7 @@ export function itemState(state = INITIAL_ITEMS, action) {
     switch (action.type) {
         case ACTIVATE:
             let item = action.data;
-            let updatedItems = state.itemState.items.map(i => {
+            let updatedItems = state.items.map(i => {
                 i.active = (i.id == item.id);
                 return i;
             });
