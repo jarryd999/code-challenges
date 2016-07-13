@@ -4,7 +4,7 @@ import { setFilter } from '../actions';
 
 const mapStateToProps = (state) => {
     let uniqueSources = new Set();
-    state.items.forEach(item => uniqueSources.add(item.source));
+    state.filterState.filters.forEach(filter => uniqueSources.add(filter));
     return {
         filters: Array.from(uniqueSources),
         activeFilter: state.activeFilter
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onChange: (filter) => {
+            dispatch(fetchItems(filter));
             dispatch(setFilter(filter));
         }
     };
