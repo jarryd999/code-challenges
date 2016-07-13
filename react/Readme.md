@@ -10,6 +10,10 @@ You must update the app to:
 
 This is a live coding exercise, not a take-home. 
 
+
+TODO:
+Fetch items based off initial filter
+
 <<<<<<< Updated upstream
 Please make sure you discuss your current level of familiarity with React with your interviewer before starting. If you say you're an expert, we'll expect you to be Googling different things than if you say you've only ever used Angular / Ember. 
 =======
