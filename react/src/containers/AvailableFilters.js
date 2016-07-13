@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { FilterSelector } from '../components';
-import { setFilter } from '../actions';
+import { setFilter, fetchItems } from '../actions';
 
 const mapStateToProps = (state) => {
     let uniqueSources = new Set();
     state.filterState.filters.forEach(filter => uniqueSources.add(filter));
     return {
         filters: Array.from(uniqueSources),
-        activeFilter: state.activeFilter
+        activeFilter: state.filterState.activeFilter
     };
 };
 
