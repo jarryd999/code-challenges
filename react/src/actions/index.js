@@ -14,3 +14,47 @@ export function setFilter(filter) {
     };
 }
 
+export function requestFilters(){
+	return {
+		type: REQUEST_FILTERS
+	}
+}
+
+export function receiveFilters(filters){
+	return {
+		type: RECEIVE_FILTERS,
+		filters: filters
+	}
+}
+
+export function fetchFilters(){
+	return dispatch => {
+		dispatch(requestFilters());
+		return fetch('http://www.kiddom.co/content/types.json')
+			.then(response => response.json())
+			.then(json => dispatch(receiveFilters(json)))
+	}
+}
+
+export function requestItems(){
+	return {
+		type: REQUEST_ITEMS
+	}
+}
+
+export function receiveItems(items){
+	return {
+		type: RECEIVE_ITEMS,
+		items: items
+	}
+}
+
+export function fetchItems(source){
+	return dispatch => {
+		dispatch(requestItems());
+		let url = 'http://www.kiddom.co/content.json?source=' + source;
+		return fetch(url)
+			.then(response => response.json())
+			.then(json => dispatch(receiveItems(json)))
+	}
+}
