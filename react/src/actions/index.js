@@ -45,7 +45,7 @@ export function requestItems(){
 export function receiveItems(items){
 	return {
 		type: RECEIVE_ITEMS,
-		items: items
+		items: items.results
 	}
 }
 
