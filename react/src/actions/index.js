@@ -1,4 +1,4 @@
-import { ACTIVATE, SET_FILTER } from '../actionTypes';
+import { ACTIVATE, SET_FILTER, REQUEST_FILTERS, RECEIVE_FILTERS, REQUEST_ITEMS, RECEIVE_ITEMS } from '../actionTypes';
 
 export function activate(item) {
     return {
@@ -32,7 +32,7 @@ export function fetchFilters(){
 		dispatch(requestFilters());
 		return fetch('http://www.kiddom.co/content/types.json')
 			.then(response => response.json())
-			.then(json => dispatch(receiveFilters(json)))
+			.then(json => dispatch(receiveFilters(Object.keys(json))))
 	}
 }
 
