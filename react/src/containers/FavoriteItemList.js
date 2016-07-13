@@ -4,10 +4,8 @@ import { ItemList } from '../components';
 import { activate } from '../actions';
 
 const mapStateToProps = (state) => {
-    let activeFilter = state.activeFilter;
     return {
-        items: state.items
-            .filter(item => !activeFilter || item.source == activeFilter)
+        items: state.itemState.items
     };
 };
 
