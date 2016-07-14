@@ -32,7 +32,12 @@ export function fetchFilters(){
 		dispatch(requestFilters());
 		return fetch('http://www.kiddom.co/content/types.json')
 			.then(response => response.json())
-			.then(json => dispatch(receiveFilters(Object.keys(json))))
+			.then(json => {
+				let filters = Object.keys(json);
+				dispatch(receiveFilters(filters));
+				let defaultFilter = filters[0];
+				dispatch(fetchItems(defaultFilter));
+		})
 	}
 }
 
